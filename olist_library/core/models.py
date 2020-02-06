@@ -11,6 +11,12 @@ class Authors(models.Model):
     '''
     authors_name = models.CharField(max_length=100, blank=False, unique=True)
 
+    def get_client(self):
+        self.db = MongoClient(host=MONGO_HOST)
+        client = self.db.library_books.core_authors
+
+        return client
+
 
 class Books(models.Model):
     '''
@@ -21,6 +27,9 @@ class Books(models.Model):
     publication_year = models.PositiveIntegerField(blank=False)
     author = models.ManyToManyField(Authors, related_name='books', blank=False)
 
+    def get_client():
+        print("entrou client")
+        db = MongoClient(host=MONGO_HOST)
+        client = db.library_books.core_books
 
-
-
+        return client
