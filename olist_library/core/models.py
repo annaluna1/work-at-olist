@@ -27,8 +27,7 @@ class Books(models.Model):
     publication_year = models.PositiveIntegerField(blank=False)
     author = models.ManyToManyField(Authors, related_name='books', blank=False)
 
-    def get_client():
-        print("entrou client")
+    def get_client(self):
         db = MongoClient(host=MONGO_HOST)
         client = db.library_books.core_books
 
