@@ -17,6 +17,9 @@ class Authors(models.Model):
 
         return client
 
+    def __str__(self):
+        return self.authors_name
+
 
 class Books(models.Model):
     '''
@@ -32,3 +35,6 @@ class Books(models.Model):
         client = db.library_books.core_books
 
         return client
+
+    def __str__(self):
+        return self.name
