@@ -16,13 +16,20 @@ class Command(BaseCommand):
             open_file = csv.reader(file)
             client = Authors.get_client(self)
             authors = []
+            dic_list = [i for i in client.find()]
+            print(dic_list)
+            next_id = dic_list[-1]['id'] + 1 if dic_list else 1
+            print(next_id)
             for line in open_file:
-                result = client.find_one({'authors_name': line})
+                result = client.find_one({'authors_name': line[0]})
                 if result:
                     next
                 else:
-                    authors.append(line)
-            client.insert_many([{'authors_name': name} for name in authors])
+                    authors.append(line[0])
+            for name in authors:
+                client.insert_one({'id': next_id,
+                                   'authors_name': name})
+                next_id += 1
             client.delete_one({'authors_name': 'name'})
         except:
             self.stdout.write('The file are not updated on database, check the format file ou if the file are created')
