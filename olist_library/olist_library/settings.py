@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from config import mongo_port, mongo_host
+from config import mongo_host
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -80,8 +80,10 @@ WSGI_APPLICATION = 'olist_library.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'library_books',
-        'HOST': f'mongodb://{mongo_host}:{mongo_port}/test',
+        'NAME': 'librarybooks',
+        'HOST': mongo_host,
+        'USER': 'carolluna',
+        'PASSWORD': 'carol2803',
     }
 }
 

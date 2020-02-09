@@ -1,8 +1,8 @@
 from djongo import models
 from pymongo import MongoClient
-from config import mongo_port, mongo_host
+from config import mongo_host
 
-MONGO_HOST = f'mongodb://{mongo_host}:{mongo_port}/test'
+MONGO_HOST = mongo_host
 
 
 class Authors(models.Model):
@@ -13,7 +13,7 @@ class Authors(models.Model):
 
     def get_client(self):
         self.db = MongoClient(host=MONGO_HOST)
-        client = self.db.library_books.core_authors
+        client = self.db.librarybooks.core_authors
 
         return client
 
@@ -32,7 +32,7 @@ class Books(models.Model):
 
     def get_client(self):
         db = MongoClient(host=MONGO_HOST)
-        client = db.library_books.core_books
+        client = db.librarybooks.core_books
 
         return client
 
