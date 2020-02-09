@@ -1,1 +1,1 @@
-web: gunicorn olist_library.wsgi
+web: gunicorn olist_library.olist_library.wsgi
