@@ -17,9 +17,7 @@ class Command(BaseCommand):
             client = Authors.get_client(self)
             authors = []
             dic_list = [i for i in client.find()]
-            print(dic_list)
             next_id = dic_list[-1]['id'] + 1 if dic_list else 1
-            print(next_id)
             for line in open_file:
                 result = client.find_one({'authors_name': line[0]})
                 if result:
