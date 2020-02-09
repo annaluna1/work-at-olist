@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 from config import mongo_host
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -85,6 +86,7 @@ DATABASES = {
         'USER': 'carolluna',
         'PASSWORD': 'carol2803',
     }
+
 }
 
 
@@ -132,3 +134,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 50,
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
 }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
